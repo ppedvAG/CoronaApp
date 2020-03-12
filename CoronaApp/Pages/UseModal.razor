@@ -1,0 +1,13 @@
+﻿@page "/usemodal"
+<h3>UseModal</h3>
+<button @onclick="showme">show modal</button>
+<MyModal Title="Das ist Titel" @ref="modal1" ></MyModal>
+@code {
+    MyModal modal1;
+    void showme()
+    {
+        modal1.Show();
+
+    }
+
+}
