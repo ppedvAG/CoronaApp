@@ -29,7 +29,7 @@ namespace CoronaApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<ToDoVM>();
+            services.AddScoped<ToDoVM>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

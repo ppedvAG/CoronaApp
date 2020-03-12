@@ -1,0 +1,27 @@
+﻿@page "/input"
+<h3>Input</h3>
+<EditForm Model="@MyAufgabe">
+    <InputText id="name" @bind-Value="@MyAufgabe.Text"
+               @onchange="NameChanged" />
+</EditForm>
+
+<input value=@MyProperty 
+       @onchange=@(e => { MyProperty = e.Value.ToString(); NameChanged2();  }) />
+
+@code {
+
+    public string MyProperty { get; set; }
+    public CoronaApp.Data.Aufgabe MyAufgabe { get; set; } = new Data.Aufgabe();
+
+    void NameChanged()
+    {
+
+
+    }
+    void NameChanged2()
+    {
+
+
+    }
+
+}
