@@ -7,12 +7,19 @@ namespace CoronaApp.Data
 {
     public class ToDoVM
     {
-        public Aufgabe AktuellAufgabe { get; set; }
+        public Aufgabe AktuellAufgabe { get; set; } = new Aufgabe();
         public List<Aufgabe> Aufgaben { get; set; } = new List<Aufgabe>();
 
-        public void Add(Aufgabe a)
+        public void Addiere(Aufgabe a)
         {
-            Aufgaben.Add(a);
+           // Aufgaben.Add(a); böse
+
+            Aufgaben.Add(new Aufgabe
+            {
+                Text = a.Text,
+                ID = Aufgaben.Count
+            });
+
 
         }
 
