@@ -1,0 +1,26 @@
+﻿@page "/todosingle"
+@inject CoronaApp.Data.ToDoVM MyTodo
+
+<h3>ToDoPage</h3>
+<input @bind="MyTodo.AktuellAufgabe.Text"
+       @onfocusout="@(_=>MyTodo.Addiere(MyTodo.AktuellAufgabe))"
+       @onkeyup="check4enter" />
+<ul class="list-group">
+    @foreach (var item in MyTodo.Aufgaben)
+    {
+        <li @key="item.ID" class="list-group-item">@item.Text </li>
+
+    }
+</ul>
+
+@code {
+
+    void check4enter(KeyboardEventArgs kevin)
+    {
+        if (kevin.Key == ConsoleKey.Enter.ToString())
+        {
+            MyTodo.Addiere(MyTodo.AktuellAufgabe);
+        }
+
+    }
+}
