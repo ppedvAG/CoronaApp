@@ -7,6 +7,7 @@ namespace CoronaApp.Pages
 {
     public partial class Hannes2
     {
+        
         protected override Task OnInitializedAsync()
         {
             return base.OnInitializedAsync();
