@@ -1,0 +1,29 @@
+﻿@page "/rechner"
+<h3>Rechner</h3>
+<div class="form-group">
+    <label for="exampleInputEmail1">Wert 1</label>
+    <input type="number" class="form-control" @bind="eins">
+    <small id="emailHelp" class="form-text text-muted">Wert 1 eingeben</small>
+</div>
+<div class="form-group">
+    <label for="exampleInputEmail1">Wert 2</label>
+    <input type="number" class="form-control" @bind="zwei">
+    <small id="emailHelp" class="form-text text-muted">Wert 2 eingeben</small>
+
+</div>
+
+<button @onclick="add" class="btn btn-primary">Add</button>
+<hr />
+<h1>@Ergebnis</h1>
+
+
+@code {
+    public int Ergebnis { get; set; }
+    public int eins { get; set; }
+    public int zwei { get; set; }
+    void add()
+    {
+        Ergebnis = eins + zwei;
+
+    }
+}
