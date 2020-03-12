@@ -17,8 +17,7 @@
     public CoronaApp.Data.ToDoVM MyTodo { get; set; } = new Data.ToDoVM();
     void check4enter(KeyboardEventArgs kevin)
     {
-        
-        if (kevin.Key=="Enter")
+         if (kevin.Key==ConsoleKey.Enter.ToString())
         {
             MyTodo.Addiere(MyTodo.AktuellAufgabe);
         }
