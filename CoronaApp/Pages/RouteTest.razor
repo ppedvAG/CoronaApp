@@ -1,0 +1,10 @@
+﻿@page "/r/{id:int}"
+<h3>RouteTest</h3>
+@id
+
+/rechnung/123?umsatzgrenzen=30
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+}
