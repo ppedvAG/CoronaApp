@@ -1,0 +1,32 @@
+﻿@page "/suche"
+<h3>SucheTodo</h3>
+<input @bind-value="SuchText" @bind-value:event="oninput" /><span class="oi oi-magnifying-glass"></span>
+<ul class="list-group">
+    @foreach (var item in MyTodo.Aufgaben.Where(x=>x.Text.Contains(SuchText)))
+    {
+        <li @key="item.ID" class="list-group-item">@item.Text </li>
+
+    }
+</ul>
+@code {
+    public string SuchText { get; set; } = "";
+    public CoronaApp.Data.ToDoVM MyTodo { get; set; } = new Data.ToDoVM();
+
+
+    protected  override void OnInitialized()
+    {
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 1, Text = "erste Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 2, Text = "zweite Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 3, Text = "dritte Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 4, Text = "vierte Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 5, Text = "fünfte Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 6, Text = "sechste Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 7, Text = "siebste Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 8, Text = "achte Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 9, Text = "neunte Aufgabe" });
+        MyTodo.Addiere(new Data.Aufgabe() { ID = 10, Text = "zehnte Aufgabe" });
+
+    }
+
+
+}
