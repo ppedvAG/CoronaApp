@@ -12,5 +12,14 @@ namespace CoronaApp.Pages
         {
             return base.OnInitializedAsync();
         }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+        }
+        void tuwas()
+        {
+
+        }
     }
 }
