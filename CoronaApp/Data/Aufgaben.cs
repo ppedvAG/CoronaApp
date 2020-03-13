@@ -10,5 +10,7 @@ namespace CoronaApp.Data
         public int ID { get; set; }
         public string Text { get; set; }
         public DateTime ErledigtBis { get; set; }
+        public Boolean Erledigt { get; set; }
+        public Boolean Bearbeiten { get; set; }
     }
 }

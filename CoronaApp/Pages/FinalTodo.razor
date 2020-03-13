@@ -1,18 +1,25 @@
 ﻿@page "/final"
 @inject IJSRuntime JsRuntime;
 @using System.Text.Json
-@using Data 
+@using Data
 <h3>FinalTodo</h3>
 was
 <input @bind="neuAufgabe.Text" />
 <br />
 bis wann
-<input @bind="neuAufgabe.ErledigtBis" />
+@*<input value="@neuAufgabe.ErledigtBis" @onchange="even12" />*@
+
+@*@ bind:event="onall"*@
+<input @bind="neuAufgabe.ErledigtBis" type="datetime-local"
+       @bind:format="dd.MM.yyyy" @bind:culture='System.Globalization.CultureInfo.GetCultureInfo("de-DE")' />
 <button @onclick="neue">Anlegen</button>
 <ul class="list-group">
     @foreach (var item in Aufgaben)
     {
-        <li @key="item.ID" class="list-group-item">@item.Text @item.ErledigtBis </li>
+    <li @key="item.ID" class="list-group-item">
+        <input type="checkbox" @bind="item.Erledigt" />
+        <span style="@text-decoration:line-through"> @item.Text @item.ErledigtBis</span>
+    </li>
 
     }
 </ul>
@@ -29,7 +36,7 @@ bis wann
     }
     protected override async Task OnInitializedAsync()
     {
-
+        neuAufgabe.ErledigtBis = DateTime.Now.AddDays(2);
 
     }
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -42,6 +49,6 @@ bis wann
             Aufgaben = JsonSerializer.Deserialize<List<Aufgabe>>(daten);
             StateHasChanged();
         }
-      
+
     }
 }
