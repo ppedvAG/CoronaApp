@@ -17,9 +17,19 @@ bis wann
     @foreach (var item in Aufgaben)
     {
     <li @key="item.ID" class="list-group-item">
-        <input type="checkbox" @bind="item.Erledigt" @onfocusout="aktualisiere"/>
-        
-         <span style='@(item.Erledigt?"text-decoration:line-through":"")'> @item.Text @item.ErledigtBis</span>
+        @if (item.Bearbeiten)
+        {
+            <input @bind="item.Text" @onfocusout="()=>aktualisiere(item)"/> 
+        }
+        else
+        {
+            <input type="checkbox" @bind="item.Erledigt" @onfocusout="aktualisiere" />
+
+            <span style='@(item.Erledigt?"text-decoration:line-through":"")' 
+                  @onclick="@(_=> item.Bearbeiten=true)"
+                  > @item.Text @item.ErledigtBis</span>
+
+        }
     </li>
 
     }
@@ -28,6 +38,14 @@ bis wann
 @code {
     public CoronaApp.Data.Aufgabe neuAufgabe { get; set; } = new Aufgabe();
     public List<CoronaApp.Data.Aufgabe> Aufgaben { get; set; } = new List<Aufgabe>();
+    void aktualisiere(Aufgabe a)
+    {
+
+        a.Bearbeiten = false;
+        var daten = JsonSerializer.Serialize(Aufgaben);
+        JsRuntime.InvokeVoidAsync("localStorage.setItem", "todos", daten);
+
+    }
     void aktualisiere()
     {
         var daten = JsonSerializer.Serialize(Aufgaben);
