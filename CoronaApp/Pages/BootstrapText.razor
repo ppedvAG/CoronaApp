@@ -7,6 +7,17 @@
 @code {
     string ErrorClass(string css)
     {
-    
+
+        //valid->is-valid invalid->is-invalid
+        string result = css.Replace(" invalid", " is-invalid");
+
+        if (css.Contains("modified"))
+        {
+            result = result.Replace(" valid", " is-valid");
+
+        }
+
+        return result;
+
     }
 }

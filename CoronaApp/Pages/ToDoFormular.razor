@@ -6,7 +6,7 @@
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <div class="form-group">
         <label for="formGroupExampleInput">Aufgabe</label>
-        <InputText   class="form-control" placeholder="Aufgaben tippen" @bind-Value="MyAufgabe.Text" ></InputText>
+        <BootstrapText   class="form-control" placeholder="Aufgaben tippen" @bind-Value="MyAufgabe.Text" ></BootstrapText>
         <ValidationMessage For="@(()=>MyAufgabe.Text)"></ValidationMessage>
     </div>
 
