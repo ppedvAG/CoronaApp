@@ -2,7 +2,7 @@
 @page  "/Formular"
 @using Data
 <h3>ToDoFormular</h3>
-<EditForm Model="MyAufgabe" OnValidSubmit="Speichern">
+<EditForm Model="MyAufgabe" OnValidSubmit="SpeichernAsync">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <div class="form-group">
         <label for="formGroupExampleInput">Aufgabe</label>
@@ -22,9 +22,9 @@
 @code {
     [Parameter]
     public int ID { get; set; }
-    public Aufgabe MyAufgabe { get; set; }
-    void Speichern()
+    public Aufgabe MyAufgabe { get; set; } = new Aufgabe();
+   async Task SpeichernAsync()
     {
-
+        
     }
 }

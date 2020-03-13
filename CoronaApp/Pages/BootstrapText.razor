@@ -1,0 +1,12 @@
+﻿@inherits InputText
+<input @attributes="AdditionalAttributes"
+           class="@ErrorClass(CssClass)"
+           value="@CurrentValue"
+           @oninput="EventCallback.Factory.CreateBinder<string>(
+        this, __value => CurrentValueAsString = __value, CurrentValueAsString)" />
+@code {
+    string ErrorClass(string css)
+    {
+    
+    }
+}
