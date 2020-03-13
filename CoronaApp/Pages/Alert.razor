@@ -1,0 +1,12 @@
+﻿@page "/alert" 
+@inject IJSRuntime JsRuntime 
+<h3>Alert</h3>
+<button @onclick="alert">alert</button>
+@code {
+    void alert()
+    {
+        JsRuntime.InvokeVoidAsync("alert", "hallo Welt");
+        JsRuntime.InvokeVoidAsync("eval", "document.title='Hallo Welt'");
+
+    }
+}
