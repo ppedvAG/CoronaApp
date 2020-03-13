@@ -13,7 +13,7 @@ namespace CoronaApp.Data
         public int ID { get; set; }
         [Required(ErrorMessage ="da muss was rein")]
         [MinLength(5,ErrorMessage ="mind 5 Zeichen")]
-        [MaxLength(20,ErrorMessage="max 20 "]
+        [MaxLength(20,ErrorMessage="max 20 ")]
         public string Text { get; set; }
 
         [Zukunft(ErrorMessage ="muss in Zukunft leigen")]
