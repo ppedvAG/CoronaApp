@@ -1,8 +1,13 @@
 ﻿@page "/usemodal"
 <h3>UseModal</h3>
+@Alter
 <button @onclick="showme">show modal</button>
-<MyModal Title="Das ist Titel" @ref="modal1" ></MyModal>
+<MyModal Title="Das ist Titel" @ref="modal1" >
+    <input @bind="Alter"/>
+    <button @onclick="showme">closema and save</button>
+</MyModal>
 @code {
+    public int Alter { get; set; }
     MyModal modal1;
     void showme()
     {
