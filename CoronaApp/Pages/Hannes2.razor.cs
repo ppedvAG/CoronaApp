@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace CoronaApp.Pages
 {
+
     public partial class Hannes2
     {
+
         [Inject]
         public ToDoVM ToDo { get; set; }
 
