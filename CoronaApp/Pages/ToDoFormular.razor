@@ -1,0 +1,30 @@
+﻿@page "/Formular/{ID:int}"
+@page  "/Formular"
+@using Data
+<h3>ToDoFormular</h3>
+<EditForm Model="MyAufgabe" OnValidSubmit="Speichern">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="form-group">
+        <label for="formGroupExampleInput">Aufgabe</label>
+        <InputText   class="form-control" placeholder="Aufgaben tippen" @bind-Value="MyAufgabe.Text" ></InputText>
+        <ValidationMessage For="@(()=>MyAufgabe.Text)"></ValidationMessage>
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput">Bis wann</label>
+        <InputDate @bind-Value="MyAufgabe.ErledigtBis" class="form-control" placeholder="Datum eingeben"></InputDate>
+
+        <ValidationMessage For="@(()=>MyAufgabe.ErledigtBis)"></ValidationMessage>
+    </div>
+    <button type="submit">Speichern</button>
+    <ValidationSummary></ValidationSummary>
+</EditForm>
+@code {
+    [Parameter]
+    public int ID { get; set; }
+    public Aufgabe MyAufgabe { get; set; }
+    void Speichern()
+    {
+
+    }
+}
