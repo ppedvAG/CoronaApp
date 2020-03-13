@@ -1,0 +1,47 @@
+﻿@page "/final"
+@inject IJSRuntime JsRuntime;
+@using System.Text.Json
+@using Data 
+<h3>FinalTodo</h3>
+was
+<input @bind="neuAufgabe.Text" />
+<br />
+bis wann
+<input @bind="neuAufgabe.ErledigtBis" />
+<button @onclick="neue">Anlegen</button>
+<ul class="list-group">
+    @foreach (var item in Aufgaben)
+    {
+        <li @key="item.ID" class="list-group-item">@item.Text @item.ErledigtBis </li>
+
+    }
+</ul>
+
+@code {
+    public CoronaApp.Data.Aufgabe neuAufgabe { get; set; } = new Aufgabe();
+    public List<CoronaApp.Data.Aufgabe> Aufgaben { get; set; } = new List<Aufgabe>();
+    void neue()
+    {
+
+        Aufgaben.Add(new Data.Aufgabe() { ID = Aufgaben.Count, Text = neuAufgabe.Text, ErledigtBis = neuAufgabe.ErledigtBis });
+        var daten = JsonSerializer.Serialize(Aufgaben);
+        JsRuntime.InvokeVoidAsync("localStorage.setItem", "todos", daten);
+    }
+    protected override async Task OnInitializedAsync()
+    {
+
+
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var daten = await JsRuntime.InvokeAsync<string>("localStorage.getItem", "todos");
+
+
+            Aufgaben = JsonSerializer.Deserialize<List<Aufgabe>>(daten);
+            StateHasChanged();
+        }
+      
+    }
+}
